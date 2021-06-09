@@ -1,0 +1,158 @@
+﻿@*@model List<WebProject1.DAL.user>*@
+
+@using WebProject1.DAL;
+@using WebProject1;
+@model dynamic
+
+@{
+    ViewBag.Title = "MainPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="slider movie-items">
+    <div class="container">
+        <div class="row">
+            <div class="social-link">
+                <p>Follow us: </p>
+                <a href="#"><i class="ion-social-facebook"></i></a>
+                <a href="#"><i class="ion-social-twitter"></i></a>
+                <a href="#"><i class="ion-social-googleplus"></i></a>
+                <a href="#"><i class="ion-social-youtube"></i></a>
+            </div>
+            <div class="slick-multiItemSlider">
+                @{
+                    foreach (movies m in Model.favMovies)
+                    {
+                        <div class="movie-item">
+                            <div class="mv-img">
+                                <a href="../movies/Details/@m.movieid"><img src="~/Images/movies/@m.pictureurl" alt="@m.name" width="285" height="437"></a>
+                            </div>
+                            <div class="title-in">
+                                <div class="cate">
+                                    <span class="blue"><a href="../movies/Details/@m.movieid"></a> 
+                                        @{ 
+                                            foreach(genre g in Model.Genre)
+                                            {
+                                                if (g.movieid == m.movieid)
+                                                {
+                                                    @g.genrename
+                                                    break;
+                                                }
+
+                                            }
+                                        }
+                                    </span>
+                                </div>
+                                <h6><a href="../movies/Details/@m.movieid">@m.name</a></h6>
+                                <p><i class="ion-android-star"></i>
+                                   <span>
+                                       @{
+                                           double? sum = 0;
+                                           int count = 0;
+                                           foreach (rating rat in Model.Ratings)
+                                           {
+                                               if (rat.movieid == m.movieid)
+                                               {
+                                                   sum = sum + @rat.stars;
+                                                   count++;
+                                               }
+
+
+                                           }
+                                           double avg = Convert.ToDouble(String.Format("{0:0.#}", (sum / count)));
+                                           @avg
+                                       }
+                                   </span> /10</p>
+                            </div>
+                        </div>
+                                           }
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="movie-items">
+    <div class="container">
+        <div class="row ipad-width">
+            <div class="col-md-12">
+
+                <div class="tabs">
+                    <ul class="tab-links">
+
+                        @*@{
+                                foreach(var i in Model)
+                                {
+                                    <p>@i.username</p>
+                                }
+                            }*@
+
+                        <li class="active"><a href="#tab1">Top Rated</a></li>
+                        
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab1" class="tab active">
+                            <div class="row">
+                                <div class="slick-multiItem">
+                                    @{
+                                        foreach (movies m in Model.topRatedMovies)
+                                        {
+
+                                            <div class="slide-it">
+                                                <div class="movie-item">
+                                                    <div class="mv-img">
+                                                        <img src="~/Images/movies/@m.pictureurl" alt="@m.name" width="185" height="284">
+                                                    </div>
+                                                    <div class="hvr-inner">
+                                                        <a href="../movies/Details/@m.movieid"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    </div>
+                                                    <div class="title-in">
+                                                        <h6><a href="../movies/Details/@m.movieid">@m.name</a></h6>
+                                                        <p><i class="ion-android-star"></i>
+                                                           <span>
+                                                               @{
+                                                                   double? sum = 0;
+                                                                   int count = 0;
+                                                                   foreach (rating rat in Model.Ratings)
+                                                                   {
+                                                                       if (rat.movieid == m.movieid)
+                                                                       {
+                                                                           sum = sum + @rat.stars;
+                                                                           count++;
+                                                                       }
+
+
+                                                                   }
+                                                                   double avg = Convert.ToDouble(String.Format("{0:0.#}", (sum / count)));
+                                                                   @avg
+                                                               }
+                                                           </span> /10
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                                                   }
+                                    }
+
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

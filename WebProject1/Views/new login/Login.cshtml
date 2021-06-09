@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form Design</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/loginStyles.css">
+</head>
+<body>
+    <div class="loginbox">
+        <img src="~/Images/avatar.png" class="avatar">
+        <h1>Login Here</h1>
+        <form action="../Home/MainPage" method="POST" class="my_form" name="my_form" onsubmit="return validateLoginForm()">
+            <p>Username</p>
+            <input type="text" name="username" id="username" placeholder="User Name">
+            <p>Password</p>
+            <input type="password" name="password" id="password" placeholder="Enter Password">
+            <input type="submit" name="" id="LoginButton" value="Login">
+            <label id="status"></label>
+            <a href="../Home/SignUp">Don't have an account?</a>
+        </form>
+    </div>
+    <script type="text/javascript" src="~/Scripts/login_validation.js"></script>
+</body>
+
+
+</html>
+
+

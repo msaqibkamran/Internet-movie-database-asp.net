@@ -1,0 +1,353 @@
+﻿@using WebProject1.DAL;
+@using WebProject1;
+@model dynamic
+
+@{
+    /**/
+    user  u =  Session["LoggedInUsers"] as user;
+   // var userid = u.userid;
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="hero mv-single-hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="@Model.userRating" class="page-single movie-single movie_single forUSerStars">
+    <div class="container">
+        <div class="row ipad-width2">
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="movie-img sticky-sb">
+                    <img src="../../../Images/movies/@Model.Movies.pictureurl" alt="@Model.Movies.name">
+                    <div class="movie-btn">
+                        <div class="btn-transform transform-vertical red">
+                            <div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch Trailer</a></div>
+                            <div><a href="@Model.Movies.trailerurl" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
+                        </div>
+                        <div class="btn-transform transform-vertical">
+                                <div onclick="addToWatchList(this,@Model.Movies.movieid, 1004)"><a href="#" class="item item-1 yellowbtn"> <i class="ion-card"  ></i> Add to WatchList</a></div>
+                                <div onclick="addToWatchList(this,@Model.Movies.movieid, 1004)"><a href="#" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="movie-single-ct main-content">
+                    <h1 class="bd-hd">@Model.Movies.name <span style="margin-left: 2%;">@Model.Movies.release_date</span></h1>
+                    <div class="social-btn">
+                        
+                        <div class="hover-bnt">
+                            <a href="#" class="parent-btn"><i class="ion-android-share-alt"></i>share</a>
+                            <div class="hvr-item">
+                                <a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
+                                <a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
+                                <a href="#" class="hvr-grow"><i class="ion-social-googleplus"></i></a>
+                                <a href="#" class="hvr-grow"><i class="ion-social-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="movie-rate">
+                        <div class="rate">
+                            <i class="ion-android-star"></i>
+                            <p>
+                                
+                                <span id="averageRating">
+                                @if (@Model.RatingCount == 0)
+                                {
+                                }
+                                else
+                                {
+                                     @Model.RatingAverage
+                                }
+                                </span> /10<br>
+                                <span id="ratingCount" class="rv">@Model.RatingCount Reviews</span>
+                            </p>
+                        </div>
+                        <div class="rate-star">
+                            <p>Rate This Movie:  </p>
+                            <i id="star1" class="ion-ios-star-outline" onclick="addRating(event,@Model.Movies.movieid, 1004)"></i>
+                            <i id="star2" class="ion-ios-star-outline" onclick="addRating(event,@Model.Movies.movieid, 1004)"></i>
+                            <i id="star3" class="ion-ios-star-outline" onclick="addRating(event,@Model.Movies.movieid, 1004)"></i>
+                            <i id="star4" class="ion-ios-star-outline" onclick="addRating(event,@Model.Movies.movieid, 1004)"></i>
+                            <i id="star5" class="ion-ios-star-outline" onclick="addRating(event,@Model.Movies.movieid, 1004)"></i>
+                            <i id="star6" class="ion-ios-star-outline" onclick="addRating(event,@Model.Movies.movieid, 1004)"></i>
+                            <i id="star7" class="ion-ios-star-outline" onclick="addRating(event,@Model.Movies.movieid, 1004)"></i>
+                            <i id="star8" class="ion-ios-star-outline" onclick="addRating(event,@Model.Movies.movieid, 1004)"></i>
+                            <i id="star9" class="ion-ios-star-outline" onclick="addRating(event,@Model.Movies.movieid, 1004)"></i>
+                            <i id="star10" class="ion-ios-star-outline" onclick="addRating(event,@Model.Movies.movieid, 1004)"></i>
+                        </div>
+                    </div>
+                    <div class="movie-tabs">
+                        <div class="tabs">
+                            <ul class="tab-links tabs-mv">
+                                <li class="active"><a href="#overview">Overview</a></li>
+                                <li><a href="#reviews"> Reviews</a></li>
+                                <li><a href="#cast">  Cast </a></li>
+
+                                <li><a href="#moviesrelated"> Related Movies</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="overview" class="tab active">
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-12 col-xs-12">
+
+                                            <!-- movie user review -->
+                                            <div class="mv-user-review-item">
+
+                                                <p> @Model.Movies.overview</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-xs-12 col-sm-12">
+                                            <div class="sb-it">
+                                                <h6>Director: </h6>
+
+                                                <p><a>@Model.Movies.directorname</a></p>
+                                            </div>
+                                            
+                                            <div class="sb-it">
+                                                <h6>Stars: </h6>
+                                                <p>
+                                                    @{
+                                                        foreach (WebProject1.DAL.actor act in Model.Actors)
+                                                        {
+
+                                                            <a href="../../actors/Details/@act.actorid">@act.actorname </a>
+                                                            <br />
+
+                                                        }
+                                                    }
+
+                                                </p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>
+
+                                                    Genres: 
+
+                                                </h6>
+                                                <p>
+                                                    @{
+                                                        foreach (WebProject1.DAL.genre gen in Model.Genre)
+                                                        {
+
+                                                            <a>@gen.genrename </a>
+                                                            <br />
+                                                        }
+                                                    }
+                                                     
+                                                </p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>Release Date:</h6>
+                                                <p>@Model.Movies.release_date</p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>Run Time:</h6>
+                                                <p>@Model.Movies.duration</p>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="reviews" class="tab review">
+                                    <div class="row">
+                                        <div class="rv-hd">
+                                           
+                                            
+                                        </div>
+                                        <div class="topbar-filter">
+                                            <p>Found <span>@Model.RatingCount reviews</span> in total</p>
+                                            
+                                        </div>
+
+                                        <div id="movieReviews">
+
+
+                                            @{
+
+                                                foreach (WebProject1.DAL.ViewModels.userComments userCom in Model.Comments)
+                                                {
+
+
+                                                    <div class="mv-user-review-item">
+                                                        <div class="user-infor">
+
+
+                                                            <img src="~/Images/userava.png" alt="">
+                                                            <div>
+                                                                <h3>@userCom.username</h3>
+                                                                <div  class="no-star">
+                                                                  <span class="ratingCommentStars">  @userCom.stars </span> <i class="ion-android-star"> </i>
+                                                                    
+                                                                </div>
+                                                                <p class="time">
+
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <p>@userCom.commentstatement</p>
+                                                    </div>
+
+
+                                                }
+                                            }
+                                        </div>
+
+                                        <div id="userComments" class="rv-hd">
+                                            <form>
+                                                <input id="commentStatement" type="text" name="searchText" placeholder="Add a Review" style="margin: 10px;">
+                                                <br>
+                                                <button onclick="addComment(event,@Model.Movies.movieid, 1004)"> Write a Review</button>
+
+                                            </form>
+                                                
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="cast" class="tab">
+                                    <div class="row">
+                                        <h3>Cast & Crew of</h3>
+                                        <h2>@Model.Movies.name</h2>
+                                        <!-- //== -->
+                                        <div class="title-hd-sm">
+                                            <h4>Directors</h4>
+                                        </div>
+                                        <div class="mvcast-item">
+                                            <div class="cast-it">
+                                                <div class="cast-left">
+
+                                                    <a>@Model.Movies.directorname</a>
+                                                </div>
+                                                <p>...  Director</p>
+                                            </div>
+                                        </div>
+                                        <!-- //== -->
+                                        <!-- //== -->
+                                        <div class="title-hd-sm">
+                                            <h4>Cast</h4>
+                                        </div>
+
+                                        <div class="mvcast-item">
+                                            @{
+                                                foreach (WebProject1.DAL.actor ac in Model.Actors)
+                                                {
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <img src="~/Images/actors/@ac.imageurl" alt="" height="100" width="100">
+                                                            <a href="../../actors/Details/@ac.actorid">@ac.actorname</a>
+                                                        </div>
+                                                        <p>...  @ac.actorname</p>
+                                                    </div>
+                                                }
+                                             }
+
+                                                </div>
+
+                                       
+                                        <!-- //== -->
+
+                                    </div>
+                                </div>
+                                
+                                <div id="moviesrelated" class="tab">
+                                    <div class="row">
+                                        <h3>Related Movies To</h3>
+                                        <h2>@Model.Movies.name</h2>
+                                        <div class="topbar-filter">
+                                            <p>Found <span>@Model.RelatedMovies.Count movies</span> in total</p>
+                                            
+
+                                        </div>
+                                        @{
+                                            List<int> already = new List<int>();
+                                            int flag = 0;
+                                            foreach (WebProject1.DAL.movies i in Model.RelatedMovies)
+                                            {
+                                                flag = 0;
+                                                if(already.Count != 0)
+                                                {
+                                                    foreach (int a in already)
+                                                    {
+                                                        if (i.movieid == a)
+                                                        {
+                                                            flag = 1;
+                                                            break;
+                                                        }
+
+                                                    }
+                                                }
+
+                                                if (flag == 0)
+                                                {
+
+                                                    already.Add(i.movieid);
+
+                                                }
+                                                if (flag != 1)
+                                                {
+                                                   
+                                                    <div class="movie-item-style-2">
+                                                        <img src="../../../Images/movies/@i.pictureurl" alt="@i.name">
+                                                        <div class="mv-item-infor">
+                                                            <h6><a href="../../movies/Details/@i.movieid">@i.name <span> @i.release_date</span></a></h6>
+                                                            <p class="rate">
+                                                                <i class="ion-android-star"></i>
+                                                                <span>
+                                                                    @{
+                                                                        double? sum = 0;
+                                                                        int count = 0;
+                                                                        foreach (WebProject1.DAL.rating rat in Model.Ratings)
+                                                                        {
+                                                                            if (rat.movieid == i.movieid)
+                                                                            {
+                                                                                sum = sum + @rat.stars;
+                                                                                count++;
+                                                                            }
+
+
+                                                                        }
+                                                                        double avg = Convert.ToDouble(String.Format("{0:0.#}", (sum / count)));
+                                                                        @avg
+                                                                    }
+                                                                </span> /10
+                                                            </p>
+                                                            <p class="describe">@i.overview</p>
+                                                            <p class="run-time"> Run Time: @i.duration.     <span>MMPA: PG-13 </span>    .     <span>Release: @i.release_date</span></p>
+                                                            <p>Director: <a>@i.directorname</a></p>
+
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                            }
+                                        }
+
+
+
+
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

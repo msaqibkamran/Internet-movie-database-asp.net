@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="21f7fbd752b8459d8fa51657cf7a950f" Name="Diagram1">
+        <EntityTypeShape EntityType="movieDatabaseModel.actor" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="movieDatabaseModel.actorInMovie" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="movieDatabaseModel.admin" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="movieDatabaseModel.comment" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="movieDatabaseModel.genre" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="movieDatabaseModel.movies" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="movieDatabaseModel.rating" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="movieDatabaseModel.user" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="movieDatabaseModel.watch_list" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="movieDatabaseModel.FK__actorInMo__actor__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="movieDatabaseModel.FK__actorInMo__movie__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="movieDatabaseModel.FK__comment__movieid__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="movieDatabaseModel.FK__comment__userid__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="movieDatabaseModel.FK__genre__movieid__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="movieDatabaseModel.FK__rating__movieid__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="movieDatabaseModel.FK__watch_lis__movie__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="movieDatabaseModel.FK__rating__userid__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="movieDatabaseModel.FK__watch_lis__useri__4316F928" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

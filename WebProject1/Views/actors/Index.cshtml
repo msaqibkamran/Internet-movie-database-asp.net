@@ -1,0 +1,65 @@
+﻿@model List<WebProject1.DAL.actor>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+
+<div class="hero common-hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hero-ct">
+                    <h1>Actors List</h1>
+                    <ul class="breadcumb">
+                        <li class="active"><a href="../../Home/MainPage">Home</a></li>
+                        <li> <span class="ion-ios-arrow-right"></span> Actors</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-single">
+    <div class="container">
+        <div class="row ipad-width2">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="topbar-filter">
+                    <p>Found <span>@Model.Count celebrities</span> in total</p>
+                    
+                    
+                </div>
+                <div class="celebrity-items">
+                    @foreach (var item in Model)
+                    {
+
+                    <div class="ceb-item ">
+                        @{ var a = item.imageurl;}
+                       
+                        <a href="Details/@item.actorid"><img src="../../../Images/actors/@a" alt="image"></a>
+                        <div class="ceb-infor">
+                            <h2><a href="Details/@item.actorid">  @item.actorname</a></h2>
+
+                        </div>
+                    </div>
+                       
+
+                    }
+
+
+
+                </div>
+
+              
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+

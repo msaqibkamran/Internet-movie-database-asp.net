@@ -1,0 +1,159 @@
+﻿@using WebProject1.DAL;
+@using WebProject1;
+@model dynamic
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="hero hero3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- celebrity single section-->
+
+<div class="page-single movie-single cebleb-single">
+    <div class="container">
+        <div class="row ipad-width">
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="mv-ceb">
+
+                    <img src="../../../Images/actors/@Model.Actor.imageurl" alt="@Model.Actor.actorname">
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="movie-single-ct">
+                    <h1 class="bd-hd">@Model.Actor.actorname</h1>
+                    @{
+                        if (Model.Actor.gender == "Female")
+                        {
+                            <p class="ceb-single">Actress</p>
+                        }
+                        else
+                        {
+                            <p class="ceb-single">Actor</p>
+                        }
+
+                    }
+
+
+                    <div class="social-link cebsingle-socail">
+                        <a href="#"><i class="ion-social-facebook"></i></a>
+                        <a href="#"><i class="ion-social-twitter"></i></a>
+                        <a href="#"><i class="ion-social-googleplus"></i></a>
+                        <a href="#"><i class="ion-social-linkedin"></i></a>
+                    </div>
+                    <div class="movie-tabs">
+                        <div class="tabs">
+                            <ul class="tab-links tabs-mv">
+                                <li class="active"><a href="#overviewceb">Overview</a></li>
+                                <li><a href="#moviesrelated"> Movies</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="overviewceb" class="tab active">
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-12 col-xs-12">
+                                            <p>
+                                                @Model.Actor.overview
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div id="moviesrelated" class="tab">
+                                    <div class="row">
+                                        <h3>Worked in Movies</h3>
+                                        <h2>@Model.Actor.actorname</h2>
+                                        <div class="topbar-filter">
+                                            <p>Found <span>@Model.Movies.Count movies</span> in total</p>
+
+
+                                        </div>
+                                        @{
+                                            if (Model.Movies.Count != 0)
+                                            {
+                                                List<int> already = new List<int>();
+                                                int flag = 0;
+                                                foreach (WebProject1.DAL.movies i in Model.Movies)
+                                                {
+                                                    flag = 0;
+                                                    if (already.Count != 0)
+                                                    {
+                                                        foreach (int a in already)
+                                                        {
+                                                            if (i.movieid == a)
+                                                            {
+                                                                flag = 1;
+                                                                break;
+                                                            }
+
+                                                        }
+                                                    }
+
+                                                    if (flag == 0)
+                                                    {
+
+                                                        already.Add(i.movieid);
+
+                                                    }
+                                                    if (flag != 1)
+                                                    {
+                                                        
+                                                        <div class="movie-item-style-2">
+                                                            <img src="../../../Images/movies/@i.pictureurl" width="170" height="290" alt="@i.name">
+                                                            <div class="mv-item-infor">
+                                                                <h6><a href="../../movies/Details/@i.movieid">@i.name <span> @i.release_date</span></a></h6>
+                                                                <p class="rate">
+                                                                    <i class="ion-android-star"></i>
+                                                                    <span>
+                                                                        @{
+                                                                            double? sum = 0;
+                                                                            int count = 0;
+                                                                            foreach (WebProject1.DAL.rating rat in Model.Ratings)
+                                                                            {
+                                                                                if (rat.movieid == i.movieid)
+                                                                                {
+                                                                                    sum = sum + @rat.stars;
+                                                                                    count++;
+                                                                                }
+
+
+                                                                            }
+                                                                            double avg = Convert.ToDouble(String.Format("{0:0.#}", (sum / count)));
+                                                                            @avg
+                                                                        }
+                                                                    </span> /10
+                                                                </p>
+                                                                <p class="describe">@i.overview</p>
+                                                                <p class="run-time"> Run Time: @i.duration.     <span>MMPA: PG-13 </span>    .     <span>Release: @i.release_date</span></p>
+                                                                <p>Director: <a>@i.directorname</a></p>
+
+                                                            </div>
+                                                        </div>
+                                                    }
+
+                                                }
+                                            }
+                                        }
+
+
+
+
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

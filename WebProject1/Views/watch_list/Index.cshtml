@@ -1,0 +1,102 @@
+﻿@using WebProject1.DAL;
+@using WebProject1;
+@model dynamic
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    
+}
+
+<div class="hero user-hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hero-ct">
+                    
+                    <ul class="breadcumb">
+                        <li class="active"><a href="../../Home/MainPage">Home</a></li>
+                        <li> <span class="ion-ios-arrow-right"></span>Watch List Movies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-single userfav_list">
+    <div class="container">
+        <div class="row ipad-width2">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <div class="user-information">
+                    <div class="user-img">
+                        <a><img src="~/Images/userava.png" alt="" width="120" height="120"><br></a>
+                        
+                    </div>
+                    <div class="user-fav">
+                        <p>User Details</p>
+                        <ul>
+                            <li>Name: @Model.userDetails.username</li>
+                            <li>Gender: @Model.userDetails.gender</li>
+                            <li>Birth Date: @Model.userDetails.dob</li>
+                          
+                        </ul>
+                    </div>
+                    <div class="user-fav">
+                        <p>Contact Information</p>
+                        <ul>
+                            <li>Email: @Model.userDetails.email</li>
+                            <li>Contact: @Model.userDetails.contactnumber</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-12 col-xs-12">
+                <div class="topbar-filter user">
+                    <p>Found <span>@Model.moviesInWatchList.Count movies</span> in total</p>
+                    
+                </div>
+                <div class="flex-wrap-movielist user-fav-list">
+                    @{
+                        foreach (movies m in @Model.moviesInWatchList)
+                        {
+                            <div id="watchListDelete" class="movie-item-style-2">
+                                <img src="../../../Images/movies/@m.pictureurl" alt="@m.name">
+                                <div class="mv-item-infor">
+                                    <h6><a href="../../../movies/Details/@m.movieid"> @m.name</a></h6>
+                                    <p class="rate"><i class="ion-android-star"></i>
+                                                    <span>
+                                                        @{
+                                                            double? sum = 0;
+                                                            int count = 0;
+                                                            foreach (WebProject1.DAL.rating rat in Model.Ratings)
+                                                            {
+                                                                if (rat.movieid == m.movieid)
+                                                                {
+                                                                    sum = sum + @rat.stars;
+                                                                    count++;
+                                                                }
+
+
+                                                            }
+                                                            double avg = Convert.ToDouble(String.Format("{0:0.#}", (sum / count)));
+                                                            @avg
+                                                        }
+                                                    </span> /10</p>
+                                    <p class="describe">@m.overview</p>
+                                    <p class="run-time"> Run Time: @m.duration.     <span>MMPA: PG-13 </span>    .     <span>@m.release_date</span></p>
+                                    <p>Director: <a>@m.directorname</a></p>
+                                     <button id="@m.movieid" class="removethis" name="@Model.userDetails.userid" > Remove From Watch List</button>
+                                </div>
+                            </div>
+                        }
+
+                    }
+
+
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</div>

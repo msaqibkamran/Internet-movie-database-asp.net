@@ -1,0 +1,78 @@
+﻿@using WebProject1;
+@model dynamic
+@{
+    ViewBag.Title = "searchActor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="hero common-hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hero-ct">
+                    <h1> Search Results </h1>
+                    <ul class="breadcumb">
+                        <li class="active"><a href="../../Home/MainPage">Home</a></li>
+                        <li> <span class="ion-ios-arrow-right"></span> ACtors</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.Actors.Count != 0)
+{
+    <div class="page-single">
+        <div class="container">
+            <div class="row ipad-width">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="topbar-filter">
+                        <p>Found <span>@Model.Actors.Count actors</span> in total</p>
+                        
+                    </div>
+                    <div class="flex-wrap-movielist">
+                        @foreach (WebProject1.DAL.actor item in Model.Actors)
+                        {
+
+                            <div class="movie-item-style-2 movie-item-style-1">
+                                <img src="../../../Images/actors/@item.imageurl" alt="@item.actorname">
+                                <div class="hvr-inner">
+                                    <a href="Details/@item.actorid"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                </div>
+                                <div class="mv-item-infor">
+                                    <h6><a href="Details/@item.actorid">@item.actorname</a></h6>
+                                   
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                  
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+else
+{
+    <div class="text-center">
+        <h2 class="text-center">No Actor found!</h2>
+    </div>
+    
+}
+
+
+
+
+
+
+
+
+

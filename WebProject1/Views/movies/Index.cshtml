@@ -1,0 +1,99 @@
+﻿@using WebProject1;
+@model dynamic
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="hero common-hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hero-ct">
+                    <h1> All Movies</h1>
+                    <ul class="breadcumb">
+                        <li class="active"><a href="../../Home/MainPage">Home</a></li>
+                        <li> <span class="ion-ios-arrow-right"></span> Movies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-single">
+    <div class="container">
+        <div class="row ipad-width">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="topbar-filter">
+                    <p>Found <span>@Model.Movies.Count movies</span> in total</p>
+                    
+                </div>
+                <div class="flex-wrap-movielist">
+                    @foreach (WebProject1.DAL.movies item in Model.Movies)
+                    {
+
+                        <div class="movie-item-style-2 movie-item-style-1">
+                            <img src="../../../Images/movies/@item.pictureurl" alt="@item.name">
+                            <div class="hvr-inner">
+                                <a href="Details/@item.movieid"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                            </div>
+                            <div class="mv-item-infor">
+                                <h6><a href="movieSingle">@item.name</a></h6>
+                                <p class="rate">
+                                    <i class="ion-android-star"></i><span>
+                                        @{
+                                            if(Model.Ratings.Count != 0)
+                                            {
+                                                double? sum = 0;
+                                                int count = 0;
+                                                foreach (WebProject1.DAL.rating rat in Model.Ratings)
+                                                {
+                                                    if (rat.movieid == item.movieid)
+                                                    {
+                                                        sum = sum + @rat.stars;
+                                                        count++;
+                                                    }
+
+
+                                                }
+                                                if(count == 0)
+                                                {
+                                                    <p>No Reviews</p>
+                                                }
+                                                else
+                                                {
+                                                    double avg = Convert.ToDouble(String.Format("{0:0.#}", (sum / count)));
+                                                @avg
+                                                }
+                                                
+                                            }
+                                            else
+                                            {
+                                               <p>No Reviews</p> 
+                                            }
+
+                                        }
+                                    </span> /10
+                                </p>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+             
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,162 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+
+
+<head>
+    <!-- Basic need -->
+    <title>Movies Database</title>
+    <meta charset="UTF-8">
+    <link rel="profile" href="#">
+
+    <!--Google Font-->
+    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+    <!-- Mobile specific meta -->
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone-no">
+
+    <!-- CSS files -->
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">*@
+    <link rel="stylesheet" href="~/Content/plugins.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+
+</head>
+<body>
+    <!--preloading-->
+    <div id="preloader">
+        <img class="logo" src="~/Images/logo1.png" alt="" width="119" height="58">
+        <div id="status">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- BEGIN | Header -->
+    <header class="ht-header">
+        <div class="container">
+            <nav class="navbar navbar-default navbar-custom">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header logo">
+                    <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <div id="nav-icon1">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <a href="../../Home/MainPage"><img class="logo" src="~/Images/logo1.png" alt="" width="119" height="58"></a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav flex-child-menu menu-left">
+                        <li class="dropdown first">
+                            <a class="btn btn-default " href="../../Home/MainPage">
+                                Home
+                            </a>
+                        </li>
+                        <li class="dropdown first">
+                            <a class="btn btn-default" href="../../movies/Index">
+                                movies
+                            </a>
+                        </li>
+                        <li class="dropdown first">
+                            <a class="btn btn-default" href="../../admins/Index">
+                                Admin
+                            </a>
+                        </li>
+                        <li class="dropdown first">
+                            <a class="btn btn-default" href="../../actors/Index">
+                                celebrities
+                            </a>
+                        </li>
+                        <li class="dropdown first">
+                            <a class="btn btn-default" href="../../watch_list/Index">
+                                Watch List
+                            </a>
+                        </li>
+
+
+                    </ul>
+                    <ul class="nav navbar-nav flex-child-menu menu-right">
+
+                        <li><a href="../../Home/Login">LOG In</a></li>
+                        <li class="btn"><a href="../../Home/SignUp">sign up</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </nav>
+
+            <!-- top search form -->
+            <form id="searchBar" action="../../movies/searchMovie">
+                <div class="top-search">
+                    <select name="options">
+                        <option name="byActor" value="byActor">Actors</option>
+                        <option name="byName" value="byName">By Name</option>
+                        <option name="byGenre" value="byGenre">By Genre</option>
+                        
+                    </select>
+                    <input type="text" name="searchText" placeholder="Search for movie or actors">
+                    <button id="searchButton"  class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </form>
+            
+        </div>
+    </header>
+    <!-- END | Header -->
+    
+
+        @RenderBody()
+    
+
+    <!-- footer section-->
+    <footer class="ht-footer">
+        <div class="container">
+            <div class="flex-parent-ft">
+                <div class="flex-child-ft item1">
+                    <a href="../../Home/MainPage"><img class="logo" src="~/Images/logo1.png" width="119" height="58" alt=""></a>
+                    <p>
+                        FAST Movies Database <br>
+                        Where you can see each and every detail<br>
+                        of Movies and Actors at one place.
+                    </p>
+
+                </div>
+                <div class="flex-child-ft item2">
+                    <h4>Office</h4>
+                    <p>
+                        FAST NUCES<br>
+                        Lahore, 54000
+                    </p>
+                </div>
+                <div class="flex-child-ft item3">
+                    <h4>Contact Us</h4>
+                    <p>Phone No: <a href="#">(+92) 321 222 333 1 </a></p>
+                    <p>Email: l174154@lhr.nu.edu.pk</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="ft-copyright">
+            <div class="ft-left">
+                <p><a href="../../Home/MainPage">Our Project</a></p>
+            </div>
+            <div class="backtotop">
+                <p><a href="#nav-icon1" id="back-to-top">Back to top  <i class="ion-ios-arrow-thin-up"></i></a></p>
+            </div>
+        </div>
+    </footer>
+    <!-- end of footer section-->
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/plugins.js"></script>
+    <script src="~/Scripts/plugins2.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+
+</body>
+</html>

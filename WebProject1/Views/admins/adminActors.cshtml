@@ -1,0 +1,108 @@
+﻿@using WebProject1.DAL;
+@using WebProject1;
+@model dynamic
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="hero user-hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hero-ct">
+
+                    <ul class="breadcumb">
+                        <li class="active"><a href="../../Home/MainPage">Home</a></li>
+                        <li> <span class="ion-ios-arrow-right"></span>Welcome @Model.Admin.adminname</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-single userfav_list">
+    <div class="container">
+        <div class="row ipad-width2">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <div class="user-information">
+                    <div class="user-img">
+                        <a><img src="~/Images/admin.jpg" alt="" width="120" height="120"><br></a>
+
+                    </div>
+                    <div class="user-fav">
+                        <p>Admin Details</p>
+                        <ul>
+                            <li>Name: @Model.Admin.adminname</li>
+                            <li>Gender: Male</li>
+
+
+                        </ul>
+                    </div>
+                    <div class="user-fav">
+                        <ul>
+
+                            <li class="active"><a href="#">Actors</a></li>
+                            <li><a href="Index">Movies</a></li>
+                            <li><a href="../../Home/Login">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="col-md-9 col-sm-12 col-xs-12" >
+
+                <h2 style="margin-bottom: 3%; margin-top: -5%; color: white" class="col-sm-12 text-center">Actors</h2>
+                <div id="adminAddActor" style="margin-bottom: 10%">
+                    <ul class="nav navbar-nav flex-child-menu menu-right col-sm-12 text-center">
+                        <li ><a class="btn text-center col-sm-12" href="../../actors/Create">ADD ACTOR</a></li>
+                    </ul>
+                </div>
+               <br>
+                
+
+                @*<div class="topbar-filter">
+                    <p class="pad-change">Found <span>@Model.Actors.Count actors</span> in total</p>
+
+                </div>*@
+                <div id="actorButton" class="row">
+                    @{
+                        foreach (actor a in Model.Actors)
+                        {
+                            <div class="col-md-12">
+                                <div class="ceb-item-style-2">
+                                    <img src="../../../Images/actors/@a.imageurl" alt="@a.actorname" width="80" height="80">
+                                    <div class="ceb-infor">
+                                        <h2><a href="../../actors/Details/@a.actorid">@a.actorname</a></h2>
+                                        @if (@a.gender == "Female")
+                                        {
+                                            <span class="ceb-single">Actress</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="ceb-single">Actor</span>
+                                        }
+                                        <div>
+                                            <button id="@a.actorid" class="removeActorFromAdmin"> Delete </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+
+                </div>
+             
+            </div>
+                       
+                    
+                
+            
+            <!-- end of celebrity list section-->
+
+        </div>
+    </div>
+</div>

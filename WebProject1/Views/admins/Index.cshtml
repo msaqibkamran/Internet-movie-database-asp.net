@@ -1,0 +1,111 @@
+﻿@using WebProject1.DAL;
+@using WebProject1;
+@model dynamic
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="hero user-hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hero-ct">
+
+                    <ul class="breadcumb">
+                        <li class="active"><a href="../../Home/MainPage">Home</a></li>
+                        <li> <span class="ion-ios-arrow-right"></span>Welcome @Model.Admin.adminname</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-single userfav_list">
+    <div class="container">
+        <div class="row ipad-width2">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <div class="user-information">
+                    <div class="user-img">
+                        <a><img src="~/Images/admin.jpg" alt="" width="120" height="120"><br></a>
+
+                    </div>
+                    <div class="user-fav">
+                        <p>Admin Details</p>
+                        <ul>
+                            <li>Name: @Model.Admin.adminname</li>
+                            <li>Gender: Male</li>
+
+
+                        </ul>
+                    </div>
+                    <div class="user-fav">
+                        <ul>
+                            <li><a href="adminActors">Actors</a></li>
+                            <li class="active"><a href="#">Movies</a></li>
+                            <li><a href="../../genre/Create">Add Genre</a></li>
+                            <li><a href="../../actorInMovies/Create">Add Actor in Movie</a></li>
+                            <li><a href="../../Home/Login">Logout</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-9 col-sm-12 col-xs-12">
+
+                <h2 style="margin-bottom: 3%; margin-top: -5%; color: white" class="col-sm-12 text-center">Movies</h2>
+                <div id="adminAddMovie" style="margin-bottom: 10%">
+                    <ul class="nav navbar-nav flex-child-menu menu-right col-sm-12 text-center">
+                        <li><a class="btn text-center col-sm-12" href="../../movies/Create">ADD MOVIE</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div id="movieButton" class="flex-wrap-movielist user-fav-list">
+                    @{
+                        foreach (movies m in @Model.Movies)
+                        {
+                            <div class="movie-item-style-2">
+                                <img src="../../../Images/movies/@m.pictureurl" alt="@m.name">
+                                <div class="mv-item-infor">
+                                    <h6><a href="../../../movies/Details/@m.movieid"> @m.name</a></h6>
+                                    <p class="rate">
+                                        <i class="ion-android-star"></i>
+                                        <span>
+                                            @{
+                                                double? sum = 0;
+                                                int count = 0;
+                                                foreach (WebProject1.DAL.rating rat in Model.Ratings)
+                                                {
+                                                    if (rat.movieid == m.movieid)
+                                                    {
+                                                        sum = sum + @rat.stars;
+                                                        count++;
+                                                    }
+
+
+                                                }
+                                                double avg = Convert.ToDouble(String.Format("{0:0.#}", (sum / count)));
+                                                @avg
+                                            }
+                                        </span> /10
+                                    </p>
+                                    <p class="describe">@m.overview</p>
+                                    <p class="run-time"> Run Time: @m.duration.     <span>MMPA: PG-13 </span>    .     <span>@m.release_date</span></p>
+                                    <p>Director: <a>@m.directorname</a></p>
+
+                                    <button id="@m.movieid" class="removeMovieFromAdmin"> Delete </button>
+                                </div>
+                            </div>
+                        }
+
+                    }
+
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

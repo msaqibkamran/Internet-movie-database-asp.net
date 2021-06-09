@@ -1,0 +1,35 @@
+﻿@model WebProject1.DAL.actorInMovie
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>actorInMovie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.actor.actorname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.actor.actorname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.movies.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.movies.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

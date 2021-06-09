@@ -1,0 +1,662 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C4056CE-3F97-46EF-BC7D-E895A8253546}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebProject1</RootNamespace>
+    <AssemblyName>WebProject1</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\actorInMoviesController.cs" />
+    <Compile Include="Controllers\actorsController.cs" />
+    <Compile Include="Controllers\adminsController.cs" />
+    <Compile Include="Controllers\commentsController.cs" />
+    <Compile Include="Controllers\genresController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\moviesController.cs" />
+    <Compile Include="Controllers\ratingsController.cs" />
+    <Compile Include="Controllers\usersController.cs" />
+    <Compile Include="Controllers\watch_listController.cs" />
+    <Compile Include="DAL\actor.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\actorInMovie.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\admin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\comment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\genre.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\movies.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\rating.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\user.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ViewModels\userComments.cs" />
+    <Compile Include="DAL\watch_list.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CRUD.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\ajax-loader.html" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\button.css" />
+    <Content Include="Content\loginStyles.css" />
+    <Content Include="Content\mainpage.css" />
+    <Content Include="Content\movieviews.css" />
+    <Content Include="Content\plugins.css" />
+    <Content Include="Content\searchButton.css" />
+    <Content Include="Content\signup.css" />
+    <Content Include="Content\SignUpStyleSheets.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\stylesSignup.css" />
+    <Content Include="DAL\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\abc.jpg" />
+    <Content Include="Images\actors\Alfie Allen.jpg" />
+    <Content Include="Images\actors\Arnold Schwar.jpg" />
+    <Content Include="Images\actors\Chris Evans.jpg" />
+    <Content Include="Images\actors\Dwayne Johnson.jpg" />
+    <Content Include="Images\actors\EmmaStone.jpg" />
+    <Content Include="Images\actors\emmaWatson.jpg" />
+    <Content Include="Images\actors\Guy Pearce.jpg" />
+    <Content Include="Images\actors\Gwyneth Paltrow.jpg" />
+    <Content Include="Images\actors\Halle Berry.jpg" />
+    <Content Include="Images\actors\hughJackman.jpg" />
+    <Content Include="Images\actors\Hugo Weaving.jpg" />
+    <Content Include="Images\actors\Jaden Smith.jpg" />
+    <Content Include="Images\actors\Jake Gyllenhaal.jpg" />
+    <Content Include="Images\actors\Jason Statham.jpg" />
+    <Content Include="Images\actors\Joaquin Phoenix.jpg" />
+    <Content Include="Images\actors\Keanu Reeves.jpg" />
+    <Content Include="Images\actors\LeonardoDiCaprio.jpg" />
+    <Content Include="Images\actors\Linda Hamilton.jpg" />
+    <Content Include="Images\actors\Mackenzie Davis.jpg" />
+    <Content Include="Images\actors\Mark Ruffalo.jpg" />
+    <Content Include="Images\actors\Michael Nyqvist.jpg" />
+    <Content Include="Images\actors\OlgaKurylenko.jpg" />
+    <Content Include="Images\actors\Robert De Niro.jpg" />
+    <Content Include="Images\actors\Robert Downey Jr.jpg" />
+    <Content Include="Images\actors\Robert Pattinson.jpg" />
+    <Content Include="Images\actors\Samuel L. Jackson.jpg" />
+    <Content Include="Images\actors\Thandie Newton.jpg" />
+    <Content Include="Images\actors\Tom Holland.jpg" />
+    <Content Include="Images\actors\tomHardy.jpg" />
+    <Content Include="Images\actors\Vin Diesel.jpg" />
+    <Content Include="Images\actors\Will Smith.jpg" />
+    <Content Include="Images\actors\Willem Dafoe.jpg" />
+    <Content Include="Images\actors\Zazie Beetz.jpg" />
+    <Content Include="Images\admin.jpg" />
+    <Content Include="Images\avatar.png" />
+    <Content Include="Images\blank.html" />
+    <Content Include="Images\fancybox_loading%402x.gif" />
+    <Content Include="Images\fancybox_loading.gif" />
+    <Content Include="Images\fancybox_overlay.png" />
+    <Content Include="Images\fancybox_sprite%402x.png" />
+    <Content Include="Images\fancybox_sprite.png" />
+    <Content Include="Images\login.jpg" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logo1.png" />
+    <Content Include="Images\movies\avengers.jpg" />
+    <Content Include="Images\movies\avengersold.jpg" />
+    <Content Include="Images\movies\captainamerica.jpg" />
+    <Content Include="Images\movies\Frozen II %282019%29.jpg" />
+    <Content Include="Images\movies\Iron Man 3 %282013%29.jpg" />
+    <Content Include="Images\movies\John Wick %282019%29.jpg" />
+    <Content Include="Images\movies\joker.jpg" />
+    <Content Include="Images\movies\jokerold.jpg" />
+    <Content Include="Images\movies\lighthouse.jpg" />
+    <Content Include="Images\movies\lionking.jpg" />
+    <Content Include="Images\movies\Spider-ManFar from Home %282019%29.jpg" />
+    <Content Include="Images\movies\TerminatorDark Fate %282019%29.jpg" />
+    <Content Include="Images\movies\The Fate of the Furious %282017%29.jpg" />
+    <Content Include="Images\movies\The Pursuit of Happyness %282006%29.jpg" />
+    <Content Include="Images\nivo\close%402x.png" />
+    <Content Include="Images\nivo\close.png" />
+    <Content Include="Images\nivo\loading%402x.gif" />
+    <Content Include="Images\nivo\loading.gif" />
+    <Content Include="Images\nivo\next%402x.png" />
+    <Content Include="Images\nivo\next.png" />
+    <Content Include="Images\nivo\prev%402x.png" />
+    <Content Include="Images\nivo\prev.png" />
+    <Content Include="Images\pic.jpg" />
+    <Content Include="Images\signup.jpg" />
+    <Content Include="Images\signupp.jpg" />
+    <Content Include="Images\uploads\ads1.png" />
+    <Content Include="Images\uploads\ads2.png" />
+    <Content Include="Images\uploads\author.png" />
+    <Content Include="Images\uploads\author2.png" />
+    <Content Include="Images\uploads\author3.png" />
+    <Content Include="Images\uploads\author4.png" />
+    <Content Include="Images\uploads\ava1.jpg" />
+    <Content Include="Images\uploads\ava2.jpg" />
+    <Content Include="Images\uploads\ava3.jpg" />
+    <Content Include="Images\uploads\ava4.jpg" />
+    <Content Include="Images\uploads\blog-detail.jpg" />
+    <Content Include="Images\uploads\blog-detail2.jpg" />
+    <Content Include="Images\uploads\blog-it1.jpg" />
+    <Content Include="Images\uploads\blog-it2.jpg" />
+    <Content Include="Images\uploads\blog26.jpg" />
+    <Content Include="Images\uploads\blog27.jpg" />
+    <Content Include="Images\uploads\blog29.jpg" />
+    <Content Include="Images\uploads\bloglist-it1.jpg" />
+    <Content Include="Images\uploads\bloglist-it2.jpg" />
+    <Content Include="Images\uploads\bloglist-it3.jpg" />
+    <Content Include="Images\uploads\bloglist-it4.jpg" />
+    <Content Include="Images\uploads\bloglist-it5.jpg" />
+    <Content Include="Images\uploads\bloglist-it6.jpg" />
+    <Content Include="Images\uploads\blogv21.jpg" />
+    <Content Include="Images\uploads\blogv22.jpg" />
+    <Content Include="Images\uploads\blogv23.jpg" />
+    <Content Include="Images\uploads\blogv24.jpg" />
+    <Content Include="Images\uploads\blogv25.jpg" />
+    <Content Include="Images\uploads\blogv29.jpg" />
+    <Content Include="Images\uploads\cast1.jpg" />
+    <Content Include="Images\uploads\cast2.jpg" />
+    <Content Include="Images\uploads\cast3.jpg" />
+    <Content Include="Images\uploads\cast4.jpg" />
+    <Content Include="Images\uploads\cast5.jpg" />
+    <Content Include="Images\uploads\cast6.jpg" />
+    <Content Include="Images\uploads\cast7.jpg" />
+    <Content Include="Images\uploads\cast9.jpg" />
+    <Content Include="Images\uploads\ceb1.jpg" />
+    <Content Include="Images\uploads\ceb2.jpg" />
+    <Content Include="Images\uploads\ceb21.jpg" />
+    <Content Include="Images\uploads\ceb22.jpg" />
+    <Content Include="Images\uploads\ceb23.jpg" />
+    <Content Include="Images\uploads\ceb24.jpg" />
+    <Content Include="Images\uploads\ceb25.jpg" />
+    <Content Include="Images\uploads\ceb26.jpg" />
+    <Content Include="Images\uploads\ceb27.jpg" />
+    <Content Include="Images\uploads\ceb28.jpg" />
+    <Content Include="Images\uploads\ceb29.jpg" />
+    <Content Include="Images\uploads\ceb3.jpg" />
+    <Content Include="Images\uploads\ceb4.jpg" />
+    <Content Include="Images\uploads\ceb5.jpg" />
+    <Content Include="Images\uploads\ceb6.jpg" />
+    <Content Include="Images\uploads\ceb7.jpg" />
+    <Content Include="Images\uploads\ceb8.jpg" />
+    <Content Include="Images\uploads\ceb9.jpg" />
+    <Content Include="Images\uploads\ceblist1.jpg" />
+    <Content Include="Images\uploads\ceblist2.jpg" />
+    <Content Include="Images\uploads\ceblist3.jpg" />
+    <Content Include="Images\uploads\ceblist4.jpg" />
+    <Content Include="Images\uploads\ceblist5.jpg" />
+    <Content Include="Images\uploads\ceblist6.jpg" />
+    <Content Include="Images\uploads\ceblist7.jpg" />
+    <Content Include="Images\uploads\ceblist8.jpg" />
+    <Content Include="Images\uploads\cebsingle2.png" />
+    <Content Include="Images\uploads\celeb-hero-single.jpg" />
+    <Content Include="Images\uploads\cm-img.png" />
+    <Content Include="Images\uploads\drop-icon.png" />
+    <Content Include="Images\uploads\err-img.png" />
+    <Content Include="Images\uploads\error-bg.jpg" />
+    <Content Include="Images\uploads\film1.jpg" />
+    <Content Include="Images\uploads\film2.jpg" />
+    <Content Include="Images\uploads\film3.jpg" />
+    <Content Include="Images\uploads\film4.jpg" />
+    <Content Include="Images\uploads\film5.jpg" />
+    <Content Include="Images\uploads\film6.jpg" />
+    <Content Include="Images\uploads\film7.jpg" />
+    <Content Include="Images\uploads\film8.jpg" />
+    <Content Include="Images\uploads\ft-bg.jpg" />
+    <Content Include="Images\uploads\hero-bg.jpg" />
+    <Content Include="Images\uploads\image1-1.jpg" />
+    <Content Include="Images\uploads\image1.jpg" />
+    <Content Include="Images\uploads\image10.jpg" />
+    <Content Include="Images\uploads\image101.jpg" />
+    <Content Include="Images\uploads\image11.jpg" />
+    <Content Include="Images\uploads\image111.jpg" />
+    <Content Include="Images\uploads\image12.jpg" />
+    <Content Include="Images\uploads\image121.jpg" />
+    <Content Include="Images\uploads\image13.jpg" />
+    <Content Include="Images\uploads\image131.jpg" />
+    <Content Include="Images\uploads\image14.jpg" />
+    <Content Include="Images\uploads\image141.jpg" />
+    <Content Include="Images\uploads\image15.jpg" />
+    <Content Include="Images\uploads\image151.jpg" />
+    <Content Include="Images\uploads\image16.jpg" />
+    <Content Include="Images\uploads\image161.jpg" />
+    <Content Include="Images\uploads\image17.jpg" />
+    <Content Include="Images\uploads\image171.jpg" />
+    <Content Include="Images\uploads\image18.jpg" />
+    <Content Include="Images\uploads\image181.jpg" />
+    <Content Include="Images\uploads\image19.jpg" />
+    <Content Include="Images\uploads\image191.jpg" />
+    <Content Include="Images\uploads\image2-1.jpg" />
+    <Content Include="Images\uploads\image2.jpg" />
+    <Content Include="Images\uploads\image20.jpg" />
+    <Content Include="Images\uploads\image201.jpg" />
+    <Content Include="Images\uploads\image21.jpg" />
+    <Content Include="Images\uploads\image211.jpg" />
+    <Content Include="Images\uploads\image3.jpg" />
+    <Content Include="Images\uploads\image31.jpg" />
+    <Content Include="Images\uploads\image4.jpg" />
+    <Content Include="Images\uploads\image41.jpg" />
+    <Content Include="Images\uploads\image5.jpg" />
+    <Content Include="Images\uploads\image51.jpg" />
+    <Content Include="Images\uploads\image6.jpg" />
+    <Content Include="Images\uploads\image61.jpg" />
+    <Content Include="Images\uploads\image7.jpg" />
+    <Content Include="Images\uploads\image71.jpg" />
+    <Content Include="Images\uploads\image8.jpg" />
+    <Content Include="Images\uploads\image81.jpg" />
+    <Content Include="Images\uploads\image9.jpg" />
+    <Content Include="Images\uploads\image91.jpg" />
+    <Content Include="Images\uploads\landing-dark-version.png" />
+    <Content Include="Images\uploads\landing-light-version.png" />
+    <Content Include="Images\uploads\movie-single.jpg" />
+    <Content Include="Images\uploads\mv-it1.jpg" />
+    <Content Include="Images\uploads\mv-it10.jpg" />
+    <Content Include="Images\uploads\mv-it11.jpg" />
+    <Content Include="Images\uploads\mv-it12.jpg" />
+    <Content Include="Images\uploads\mv-it2.jpg" />
+    <Content Include="Images\uploads\mv-it3.jpg" />
+    <Content Include="Images\uploads\mv-it4.jpg" />
+    <Content Include="Images\uploads\mv-it5.jpg" />
+    <Content Include="Images\uploads\mv-it6.jpg" />
+    <Content Include="Images\uploads\mv-it7.jpg" />
+    <Content Include="Images\uploads\mv-it8.jpg" />
+    <Content Include="Images\uploads\mv-it9.jpg" />
+    <Content Include="Images\uploads\mv-item1.jpg" />
+    <Content Include="Images\uploads\mv-item10.jpg" />
+    <Content Include="Images\uploads\mv-item11.jpg" />
+    <Content Include="Images\uploads\mv-item12.jpg" />
+    <Content Include="Images\uploads\mv-item2.jpg" />
+    <Content Include="Images\uploads\mv-item3.jpg" />
+    <Content Include="Images\uploads\mv-item4.jpg" />
+    <Content Include="Images\uploads\mv-item5.jpg" />
+    <Content Include="Images\uploads\mv-item6.jpg" />
+    <Content Include="Images\uploads\mv-item7.jpg" />
+    <Content Include="Images\uploads\mv-item8.jpg" />
+    <Content Include="Images\uploads\mv-item9.jpg" />
+    <Content Include="Images\uploads\mv1.jpg" />
+    <Content Include="Images\uploads\mv2.jpg" />
+    <Content Include="Images\uploads\mv3.jpg" />
+    <Content Include="Images\uploads\mv4.jpg" />
+    <Content Include="Images\uploads\mv5.jpg" />
+    <Content Include="Images\uploads\play-vd.png" />
+    <Content Include="Images\uploads\poster1.jpg" />
+    <Content Include="Images\uploads\search-bg.png" />
+    <Content Include="Images\uploads\search-bgsb.png" />
+    <Content Include="Images\uploads\season.jpg" />
+    <Content Include="Images\uploads\series-img.jpg" />
+    <Content Include="Images\uploads\slider-bg.jpg" />
+    <Content Include="Images\uploads\slider-bg2.jpg" />
+    <Content Include="Images\uploads\slider1.jpg" />
+    <Content Include="Images\uploads\slider2.jpg" />
+    <Content Include="Images\uploads\slider3.jpg" />
+    <Content Include="Images\uploads\slider4.jpg" />
+    <Content Include="Images\uploads\sr-single.jpg" />
+    <Content Include="Images\uploads\topsearch.png" />
+    <Content Include="Images\uploads\trailer2.jpg" />
+    <Content Include="Images\uploads\trailer3.png" />
+    <Content Include="Images\uploads\trailer4.png" />
+    <Content Include="Images\uploads\trailer5.jpg" />
+    <Content Include="Images\uploads\trailer6.jpg" />
+    <Content Include="Images\uploads\trailer7.jpg" />
+    <Content Include="Images\uploads\user-hero-bg.jpg" />
+    <Content Include="Images\uploads\user-img.png" />
+    <Content Include="Images\uploads\userava1.jpg" />
+    <Content Include="Images\uploads\userava2.jpg" />
+    <Content Include="Images\uploads\userava3.jpg" />
+    <Content Include="Images\uploads\userava4.jpg" />
+    <Content Include="Images\uploads\userava5.jpg" />
+    <Content Include="Images\uploads\vd-item1.jpg" />
+    <Content Include="Images\uploads\vd-item2.jpg" />
+    <Content Include="Images\uploads\vd-item3.jpg" />
+    <Content Include="Images\uploads\vd-item4.jpg" />
+    <Content Include="Images\userava.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="DAL\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DAL\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\login_validation.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\plugins.js" />
+    <Content Include="Scripts\plugins2.js" />
+    <Content Include="Scripts\signup.js" />
+    <Content Include="Scripts\SignupNew.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Home\MainPage.cshtml" />
+    <Content Include="Views\Home\Celebritylist.cshtml" />
+    <Content Include="Views\Home\Movielist.cshtml" />
+    <Content Include="Views\Home\movieSingle.cshtml" />
+    <Content Include="Views\actors\Create.cshtml" />
+    <Content Include="Views\actors\Delete.cshtml" />
+    <Content Include="Views\actors\Details.cshtml" />
+    <Content Include="Views\actors\Edit.cshtml" />
+    <Content Include="Views\actors\Index.cshtml" />
+    <Content Include="Views\movies\Create.cshtml" />
+    <Content Include="Views\movies\Delete.cshtml" />
+    <Content Include="Views\movies\Details.cshtml" />
+    <Content Include="Views\movies\Edit.cshtml" />
+    <Content Include="Views\movies\Index.cshtml" />
+    <Content Include="Views\Home\SignupNew.cshtml" />
+    <Content Include="Views\comments\Create.cshtml" />
+    <Content Include="Views\comments\Delete.cshtml" />
+    <Content Include="Views\comments\Details.cshtml" />
+    <Content Include="Views\comments\Edit.cshtml" />
+    <Content Include="Views\comments\Index.cshtml" />
+    <Content Include="Views\movies\searchMovie.cshtml" />
+    <Content Include="Views\actors\searchActor.cshtml" />
+    <Content Include="Views\movies\notFound.cshtml" />
+    <Content Include="Views\users\Create.cshtml" />
+    <Content Include="Views\users\Delete.cshtml" />
+    <Content Include="Views\users\Details.cshtml" />
+    <Content Include="Views\users\Edit.cshtml" />
+    <Content Include="Views\users\Index.cshtml" />
+    <Content Include="Views\ratings\Create.cshtml" />
+    <Content Include="Views\ratings\Delete.cshtml" />
+    <Content Include="Views\ratings\Details.cshtml" />
+    <Content Include="Views\ratings\Edit.cshtml" />
+    <Content Include="Views\ratings\Index.cshtml" />
+    <Content Include="Views\watch_list\Create.cshtml" />
+    <Content Include="Views\watch_list\Delete.cshtml" />
+    <Content Include="Views\watch_list\Details.cshtml" />
+    <Content Include="Views\watch_list\Edit.cshtml" />
+    <Content Include="Views\watch_list\Index.cshtml" />
+    <Content Include="Views\admins\Create.cshtml" />
+    <Content Include="Views\admins\Delete.cshtml" />
+    <Content Include="Views\admins\Details.cshtml" />
+    <Content Include="Views\admins\Edit.cshtml" />
+    <Content Include="Views\admins\Index.cshtml" />
+    <Content Include="Views\admins\adminActors.cshtml" />
+    <Content Include="Views\genres\Create.cshtml" />
+    <Content Include="Views\genres\Delete.cshtml" />
+    <Content Include="Views\genres\Details.cshtml" />
+    <Content Include="Views\genres\Edit.cshtml" />
+    <Content Include="Views\genres\Index.cshtml" />
+    <Content Include="Views\actorInMovies\Create.cshtml" />
+    <Content Include="Views\actorInMovies\Delete.cshtml" />
+    <Content Include="Views\actorInMovies\Details.cshtml" />
+    <Content Include="Views\actorInMovies\Edit.cshtml" />
+    <Content Include="Views\actorInMovies\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63750</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63750/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
